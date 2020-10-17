@@ -1,0 +1,5 @@
+# Prisma Migrate lockfile v1
+
+20201015061914-initial
+20201015134216-removed-relations
+20201017091147-added-sender-id-column-to-user

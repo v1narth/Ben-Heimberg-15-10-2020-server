@@ -1,0 +1,39 @@
+{
+  "name": "server",
+  "scripts": {
+    "start": "node dist/server",
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && npm -s run generate && tsc",
+    "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
+    "generate:prisma": "prisma generate",
+    "generate:nexus": "ts-node --transpile-only src/schema",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly src/server"
+  },
+  "dependencies": {
+    "@nexus/schema": "0.16.0",
+    "@types/node-fetch": "2.5.7",
+    "apollo-server": "2.18.2",
+    "apollo-server-express": "^2.18.2",
+    "dotenv": "^8.2.0",
+    "graphql": "15.3.0",
+    "graphql-iso-date": "^3.6.1",
+    "jsonwebtoken": "^8.5.1",
+    "nexus-plugin-prisma": "0.19.0"
+  },
+  "devDependencies": {
+    "@types/graphql-iso-date": "^3.4.0",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "12.12.67",
+    "ts-node": "9.0.0",
+    "ts-node-dev": "1.0.0-pre.50",
+    "typescript": "4.0.3"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}

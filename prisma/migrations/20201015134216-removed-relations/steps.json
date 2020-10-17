@@ -1,0 +1,59 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteField",
+      "model": "Message",
+      "field": "senderId"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Message",
+      "field": "receiverId"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Message",
+      "field": "sender",
+      "type": "Int"
+    },
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Message",
+          "field": "sender"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Message",
+      "field": "receiver",
+      "type": "Int"
+    },
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Message",
+          "field": "receiver"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "messagesSent"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "messagesReceived"
+    }
+  ]
+}
