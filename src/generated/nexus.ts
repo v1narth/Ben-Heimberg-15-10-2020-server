@@ -102,6 +102,7 @@ export interface NexusGenFieldTypes {
     messages: Array<NexusGenRootTypes['Message'] | null> | null; // [Message]
     user: NexusGenRootTypes['User'] | null; // User
     userMessages: NexusGenRootTypes['UserMessages'] | null; // UserMessages
+    users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
   }
   Subscription: { // field return type
     messageCreated: NexusGenRootTypes['Message'] | null; // Message
@@ -131,6 +132,9 @@ export interface NexusGenArgTypes {
   Query: {
     userMessages: { // args
       id?: string | null; // String
+    }
+    users: { // args
+      q?: string | null; // String
     }
   }
 }

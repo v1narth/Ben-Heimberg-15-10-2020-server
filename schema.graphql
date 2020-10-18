@@ -43,6 +43,7 @@ type Query {
   messages: [Message]
   user: User
   userMessages(id: String): UserMessages
+  users(q: String): [User]
 }
 
 type Subscription {

@@ -66,6 +66,19 @@ const Query = queryType({
       },
     })
 
+    t.field('users', {
+      type: 'User',
+      list: true,
+      args: {
+        q: stringArg(),
+      },
+      resolve: async (root, args) => {
+        return await prisma.user.findMany({
+          where: { senderId: { contains: args.q ?? '' } },
+        })
+      },
+    })
+
     t.field('messages', {
       type: 'Message',
       list: true,
