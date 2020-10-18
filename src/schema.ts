@@ -141,6 +141,8 @@ const UserMessages = objectType({
 
 const Mutation = mutationType({
   definition(t) {
+    t.crud.createOneUser()
+    t.crud.deleteOneMessage()
     t.crud.createOneMessage({
       resolve: async (root, args, ctx) => {
         const message = await prisma.message.create(args)
@@ -163,8 +165,6 @@ const Mutation = mutationType({
         return message
       },
     })
-
-    t.crud.deleteOneMessage()
 
     t.field('login', {
       type: 'LoginPayload',

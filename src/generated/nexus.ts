@@ -29,6 +29,9 @@ export interface NexusGenInputs {
   MessageWhereUniqueInput: { // input type
     id?: number | null; // Int
   }
+  UserCreateInput: { // input type
+    senderId: string; // String!
+  }
 }
 
 export interface NexusGenEnums {
@@ -72,6 +75,7 @@ export interface NexusGenRootTypes {
 export interface NexusGenAllTypes extends NexusGenRootTypes {
   MessageCreateInput: NexusGenInputs['MessageCreateInput'];
   MessageWhereUniqueInput: NexusGenInputs['MessageWhereUniqueInput'];
+  UserCreateInput: NexusGenInputs['UserCreateInput'];
   String: NexusGenScalars['String'];
   Int: NexusGenScalars['Int'];
   Float: NexusGenScalars['Float'];
@@ -95,6 +99,7 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     createOneMessage: NexusGenRootTypes['Message']; // Message!
+    createOneUser: NexusGenRootTypes['User']; // User!
     deleteOneMessage: NexusGenRootTypes['Message'] | null; // Message
     login: NexusGenRootTypes['LoginPayload'] | null; // LoginPayload
   }
@@ -122,6 +127,9 @@ export interface NexusGenArgTypes {
     createOneMessage: { // args
       data: NexusGenInputs['MessageCreateInput']; // MessageCreateInput!
     }
+    createOneUser: { // args
+      data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
+    }
     deleteOneMessage: { // args
       where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
     }
@@ -146,7 +154,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "LoginPayload" | "Message" | "Mutation" | "Query" | "Subscription" | "User" | "UserMessages";
 
-export type NexusGenInputNames = "MessageCreateInput" | "MessageWhereUniqueInput";
+export type NexusGenInputNames = "MessageCreateInput" | "MessageWhereUniqueInput" | "UserCreateInput";
 
 export type NexusGenEnumNames = never;
 

@@ -35,6 +35,7 @@ input MessageWhereUniqueInput {
 
 type Mutation {
   createOneMessage(data: MessageCreateInput!): Message!
+  createOneUser(data: UserCreateInput!): User!
   deleteOneMessage(where: MessageWhereUniqueInput!): Message
   login(id: String!): LoginPayload
 }
@@ -52,6 +53,10 @@ type Subscription {
 
 type User {
   id: Int!
+  senderId: String!
+}
+
+input UserCreateInput {
   senderId: String!
 }
 
