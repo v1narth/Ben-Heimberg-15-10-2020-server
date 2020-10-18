@@ -22,8 +22,8 @@ export interface NexusGenInputs {
   MessageCreateInput: { // input type
     createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     message: string; // String!
-    receiver: number; // Int!
-    sender: number; // Int!
+    receiver: string; // String!
+    sender: string; // String!
     subject: string; // String!
   }
   MessageWhereUniqueInput: { // input type
@@ -52,8 +52,8 @@ export interface NexusGenRootTypes {
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     message: string; // String!
-    receiver: number; // Int!
-    sender: number; // Int!
+    receiver: string; // String!
+    sender: string; // String!
     subject: string; // String!
   }
   Mutation: {};
@@ -61,7 +61,7 @@ export interface NexusGenRootTypes {
   Subscription: {};
   User: { // root type
     id: number; // Int!
-    senderId: number; // Int!
+    senderId: string; // String!
   }
   UserMessages: { // root type
     received?: Array<NexusGenRootTypes['Message'] | null> | null; // [Message]
@@ -89,8 +89,8 @@ export interface NexusGenFieldTypes {
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     id: number; // Int!
     message: string; // String!
-    receiver: number; // Int!
-    sender: number; // Int!
+    receiver: string; // String!
+    sender: string; // String!
     subject: string; // String!
   }
   Mutation: { // field return type
@@ -108,7 +108,7 @@ export interface NexusGenFieldTypes {
   }
   User: { // field return type
     id: number; // Int!
-    senderId: number; // Int!
+    senderId: string; // String!
   }
   UserMessages: { // field return type
     received: Array<NexusGenRootTypes['Message'] | null> | null; // [Message]
@@ -125,12 +125,12 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['MessageWhereUniqueInput']; // MessageWhereUniqueInput!
     }
     login: { // args
-      id: number; // Int!
+      id: string; // String!
     }
   }
   Query: {
     userMessages: { // args
-      id?: number | null; // Int
+      id?: string | null; // String
     }
   }
 }

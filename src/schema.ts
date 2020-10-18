@@ -5,6 +5,7 @@ import {
   mutationType,
   objectType,
   queryType,
+  stringArg,
   subscriptionType,
 } from '@nexus/schema'
 import { nexusSchemaPrisma } from 'nexus-plugin-prisma/schema'
@@ -24,7 +25,7 @@ const validateJWTToken = async (bearerToken: string | undefined) => {
 
     if (id) {
       try {
-        return await prisma.user.findOne({ where: { senderId: Number(id) } })
+        return await prisma.user.findOne({ where: { senderId: String(id) } })
       } catch (e) {
         console.error(`Could not find user with id ${id}`)
       }
@@ -76,7 +77,7 @@ const Query = queryType({
     t.field('userMessages', {
       type: UserMessages,
       args: {
-        id: intArg({ required: false }),
+        id: stringArg({ required: false }),
       },
       resolve: async (root, args, ctx) => {
         let sent: any[]
@@ -155,12 +156,12 @@ const Mutation = mutationType({
     t.field('login', {
       type: 'LoginPayload',
       args: {
-        id: intArg({ required: true }),
+        id: stringArg({ required: true }),
       },
       resolve: async (root, { id }, ctx) => {
         const user = await prisma.user.findOne({ where: { senderId: id } })
         if (user) {
-          const accessToken = jwt.sign(String(id), process.env.JWT_SECRET!)
+          const accessToken = jwt.sign(id, process.env.JWT_SECRET!)
 
           return {
             accessToken,

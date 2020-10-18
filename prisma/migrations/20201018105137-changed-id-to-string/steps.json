@@ -1,0 +1,23 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Message",
+      "field": "sender",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Message",
+      "field": "receiver",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "User",
+      "field": "senderId",
+      "type": "String"
+    }
+  ]
+}

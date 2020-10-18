@@ -16,16 +16,16 @@ type Message {
   createdAt: DateTime!
   id: Int!
   message: String!
-  receiver: Int!
-  sender: Int!
+  receiver: String!
+  sender: String!
   subject: String!
 }
 
 input MessageCreateInput {
   createdAt: DateTime
   message: String!
-  receiver: Int!
-  sender: Int!
+  receiver: String!
+  sender: String!
   subject: String!
 }
 
@@ -36,13 +36,13 @@ input MessageWhereUniqueInput {
 type Mutation {
   createOneMessage(data: MessageCreateInput!): Message!
   deleteOneMessage(where: MessageWhereUniqueInput!): Message
-  login(id: Int!): LoginPayload
+  login(id: String!): LoginPayload
 }
 
 type Query {
   messages: [Message]
   user: User
-  userMessages(id: Int): UserMessages
+  userMessages(id: String): UserMessages
 }
 
 type Subscription {
@@ -51,7 +51,7 @@ type Subscription {
 
 type User {
   id: Int!
-  senderId: Int!
+  senderId: String!
 }
 
 type UserMessages {
